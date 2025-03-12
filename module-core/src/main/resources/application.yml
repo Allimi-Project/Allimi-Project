@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: module-core
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/allimi
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
+
+  thymeleaf:
+    prefix: classpath:/templates/   # 기본 템플릿 경로
+    suffix: .html                   # 템플릿 파일 확장자
+    mode: HTML                      # 처리 모드
+    cache: false                    # 개발 중에는 캐싱 비활성화
+    encoding: UTF-8
+
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace

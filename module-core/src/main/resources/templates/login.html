@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Allimi Login Page</title>
+    <link rel="stylesheet" href="/css/style.css">  <!-- 스타일 추가 가능 -->
+</head>
+<body>
+<h2>Login</h2>
+
+<!-- 로그인 실패 시 메시지 표시 -->
+<div th:if="${param.error}">
+    <p style="color: red;">Invalid username or password.</p>
+</div>
+
+<!-- 로그아웃 메시지 표시 -->
+<div th:if="${param.logout}">
+    <p style="color: green;">You have been logged out.</p>
+</div>
+
+<!-- 로그인 폼 -->
+<form th:action="@{/login}" method="post">
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+</form>
+
+<!-- 회원가입이 필요하면 추가 -->
+<p>Don't have an account? <a href="/register">Sign up</a></p>
+</body>
+</html>
