@@ -21,13 +21,14 @@ public class SecurityConfig {
 
         http // 경로 접근 권한 설정
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/**").permitAll() // 로그인 없이 접근 가능
+                        .requestMatchers("/page").authenticated() // 로그인한 사용자만 접근 가능
                         .anyRequest().authenticated()
                 );
         http // 로그인 페이지로 리다이렉션 설정
                 .formLogin((auth) -> auth
                         .loginPage("/login") // 커스텀 로그인 페이지 설정
-                        .defaultSuccessUrl("/Page") // 로그인 성공 시 이동할 페이지
+                        .defaultSuccessUrl("/page", true) // 로그인 성공 시 이동할 페이지
                         .permitAll()
                 );
 
