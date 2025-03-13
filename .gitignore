@@ -18,6 +18,9 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+module-api/src/main/resources/application-api.yml
+module-batch/src/main/resources/application-batch.yml
+module-core/src/main/resources/application.yml
 .idea
 *.iws
 *.iml

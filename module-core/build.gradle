@@ -45,8 +45,44 @@ tasks.bootJar {
 }
 
 dependencies {
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.18.2' // Jackson
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
+    implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.4.2'
+
+    // Serialization / Deserialization
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    // WebFlux
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // Spring Boot
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    // XML
+    implementation 'org.springframework:spring-oxm'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api'
+    implementation 'org.glassfish.jaxb:jaxb-runtime'
+    implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '4.0.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.3'
+    implementation 'com.fasterxml:jackson-xml-databind:0.6.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.3'
+
+    // MySQL
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Test
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
