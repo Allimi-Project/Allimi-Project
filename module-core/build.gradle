@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'org.springframework.boot' version '3.3.2'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'jacoco'
@@ -45,17 +45,17 @@ tasks.bootJar {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA
     runtimeOnly 'com.mysql:mysql-connector-j' // MySQL 사용 시
     implementation 'org.springframework.boot:spring-boot-starter-security' // 기본 Spring Security 기능
     testImplementation 'org.springframework.security:spring-security-test' // 시큐리티 테스트
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
     implementation 'org.springframework.boot:spring-boot-starter-validation' // 데이터 검증
 
+    api 'org.springframework.boot:spring-boot-starter-validation' // DTO 검증을 위해 필요
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.boot:spring-boot-starter-logging'
 

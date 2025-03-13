@@ -1,5 +1,7 @@
-package com.allimi.modulecore.member;
+package com.allimi.moduleapi.Member;
 
+import com.allimi.modulecore.member.MemberService;
+import com.allimi.modulecore.member.SignUpDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

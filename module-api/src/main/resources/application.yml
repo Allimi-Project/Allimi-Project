@@ -1,1 +1,18 @@
-spring.application.name=module-api
+spring:
+  application:
+    name: module-api
+
+  thymeleaf:
+    prefix: classpath:/templates/   # 기본 템플릿 경로
+    suffix: .html                   # 템플릿 파일 확장자
+    mode: HTML                      # 처리 모드
+    cache: false                    # 개발 중에는 캐싱 비활성화
+    encoding: UTF-8
+
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+
+  config:
+    import: "optional:classpath:/application-core.yml"
