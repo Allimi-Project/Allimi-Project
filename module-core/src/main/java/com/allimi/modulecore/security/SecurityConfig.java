@@ -5,6 +5,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
+import org.springframework.session.web.http.HttpSessionIdResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -43,5 +45,10 @@ public class SecurityConfig {
                         .maxSessionsPreventsLogin(true)); // 초과시 새로운 로그인 차단
 
         return http.build();
+    }
+    // Redis 기반 세션 관리를 위해 세션 ID를 HTTP 헤더에 저장
+    @Bean
+    public HttpSessionIdResolver httpSessionIdResolver() {
+        return HeaderHttpSessionIdResolver.xAuthToken();
     }
 }
