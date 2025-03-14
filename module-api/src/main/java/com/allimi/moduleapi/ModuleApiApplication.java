@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.allimi.modulecore") // module-core의 빈을 스캔
+@ComponentScan(basePackages = {"com.allimi.modulecore", "com.allimi.moduleapi"}) // module-core의 빈을 스캔
 public class ModuleApiApplication {
 
 	public static void main(String[] args) {
