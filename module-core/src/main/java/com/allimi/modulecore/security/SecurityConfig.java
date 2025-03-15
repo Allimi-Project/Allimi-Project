@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.session.web.http.CookieHttpSessionIdResolver;
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 import org.springframework.session.web.http.HttpSessionIdResolver;
 
@@ -32,7 +33,7 @@ public class SecurityConfig {
                         .loginPage("/login") // 커스텀 로그인 페이지 설정
                         .loginProcessingUrl("/login")
                         .usernameParameter("email") // 기본 "username"을 "email"로 변경
-                        .defaultSuccessUrl("/page", true) // 로그인 성공 시 이동할 페이지
+                        .defaultSuccessUrl("/page") // 로그인 성공 시 이동할 페이지
                         .permitAll()
                 );
 
@@ -49,6 +50,6 @@ public class SecurityConfig {
     // Redis 기반 세션 관리를 위해 세션 ID를 HTTP 헤더에 저장
     @Bean
     public HttpSessionIdResolver httpSessionIdResolver() {
-        return HeaderHttpSessionIdResolver.xAuthToken();
+        return new CookieHttpSessionIdResolver();
     }
 }
